@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Repository() {
+export default function Repository() {
   return <h1>Repository</h1>;
 }
-export default Repository;
+// export default Repository;
