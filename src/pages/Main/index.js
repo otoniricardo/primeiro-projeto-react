@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
-import { Container, Form, SubmitButton, List } from './styles';
+import Container from '../../components/Container';
+
+import { Form, SubmitButton, List } from './styles';
 
 export default class Main extends Component {
+  // eslint-disable-next-line react/state-in-constructor
   state = {
     newRepo: '',
     repositories: [],
@@ -22,7 +25,7 @@ export default class Main extends Component {
   componentDidUpdate(_, prevState) {
     const { repositories } = this.state;
 
-    if (prevState.repositories !== this.state.repositories)
+    if (prevState.repositories !== repositories)
       localStorage.setItem('repositories', JSON.stringify(repositories));
   }
 
