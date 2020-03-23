@@ -4,21 +4,20 @@ import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 
 import api from '../../services/api';
 
-import { Container, Form, SubmitButton } from './styles';
+import { Container, Form, SubmitButton, List } from './styles';
 
 export default class Main extends Component {
-  // eslint-disable-next-line react/state-in-constructor
   state = {
     newRepo: '',
     repositories: [],
     loading: false,
   };
 
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     this.setState({ newRepo: e.target.value });
   };
 
-  handleSubmit = async (e) => {
+  handleSubmit = async e => {
     e.preventDefault();
 
     this.setState({ loading: true });
@@ -39,7 +38,7 @@ export default class Main extends Component {
   };
 
   render() {
-    const { newRepo, loading } = this.state;
+    const { newRepo, loading, repositories } = this.state;
     return (
       <Container>
         <h1>
@@ -61,6 +60,14 @@ export default class Main extends Component {
             )}
           </SubmitButton>
         </Form>
+
+        <List>
+          {repositories.map(rep => (
+            <li key={rep.name}>
+              <span>{rep.name}</span>
+            </li>
+          ))}
+        </List>
       </Container>
     );
   }
